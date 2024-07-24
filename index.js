@@ -1,5 +1,5 @@
 import { ApolloServer, gql} from 'apollo-server'
-
+// Arreglo con personas quemadas para la prueba
 const persons = [
     {
         name: "John Doe",
@@ -75,6 +75,7 @@ const persons = [
 
 
 //! significa requerido
+// Se pasan las definiciones a gql y se define query y sus metodos
 const typeDefs = gql `
     type Person {
         name: String!
@@ -83,13 +84,13 @@ const typeDefs = gql `
         city: String!
         id: ID!
     }
-
     type Query {
     personCount: Int!
     allPersons: [Person]!
     }
 `
 
+// Los resolvers son como los metodos van a obtener los datos al realizar el query
 const resolvers = {
     Query:{
         personCount: () => persons.length,
@@ -97,11 +98,13 @@ const resolvers = {
     }
 };
 
+//Se crea el server y se le pasa los resolvers y las definiciones
 const server = new ApolloServer({
     typeDefs : typeDefs,
     resolvers: resolvers
 });
 
+// Se inicia el servidor
 server.listen().then(({url}) => {
     console.log(`Server ready at ${url}`)
 });
