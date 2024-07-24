@@ -98,7 +98,7 @@ const resolvers = {
     }
 };
 
-//Se crea el server y se le pasa los resolvers y las definiciones
+// Se crea el server y se le pasa los resolvers y las definiciones
 const server = new ApolloServer({
     typeDefs : typeDefs,
     resolvers: resolvers
